@@ -1,8 +1,11 @@
 import { AddButton } from "../Buttons/AddButton/AddButton"
 import { useRef } from 'react'
 
+interface NewToDoProps {
+    update: () => void
+}
 
-const NewToDo = () => {
+const NewToDo:React.FC<NewToDoProps> = ({update}:NewToDoProps) => {
     const input = useRef(null)
     function handleClick() {
         let toDoes = localStorage.getItem('toDoes');
@@ -18,6 +21,7 @@ const NewToDo = () => {
             toDoes = JSON.stringify(newToDoes);
             localStorage.setItem('toDoes', toDoes);
         }
+        update();
     }
     return <><input type="text"  ref={input}/> <AddButton onClick={handleClick}/> </>
 }

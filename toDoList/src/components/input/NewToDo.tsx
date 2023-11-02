@@ -13,17 +13,19 @@ const NewToDo:React.FC<NewToDoProps> = ({update}:NewToDoProps) => {
             localStorage.setItem('toDoes', '[]');
             toDoes = localStorage.getItem('toDoes');
         }
-
+        
         if (toDoes){
-            console.log(input.current.value);
             const newToDoes = JSON.parse(toDoes);
-            newToDoes.push(input.current.value);
+            newToDoes.push(input.current?.value);
             toDoes = JSON.stringify(newToDoes);
             localStorage.setItem('toDoes', toDoes);
         }
-        update();
+        
     }
-    return <><input type="text"  ref={input}/> <AddButton onClick={handleClick}/> </>
+    return <><input type="text"  ref={input}/> <AddButton onClick={() => {
+        handleClick();
+        update();
+    }}/> </>
 }
 
 export { NewToDo }

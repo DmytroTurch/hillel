@@ -6,11 +6,12 @@ function App() {
   const toDoes = localStorage.getItem('toDoes');
   const initList = toDoes ? JSON.parse(toDoes) : [];
   
-  const [list, setList] = useState(initList)
+  const [list, setList] = useState(initList);
 
   function handleUpdate() {
-    if (toDoes) {
-      setList(JSON.parse(toDoes))
+    const localCheck = localStorage.getItem('toDoes');
+    if (localCheck) {
+      setList(JSON.parse(localCheck))
     }
   }
   return (

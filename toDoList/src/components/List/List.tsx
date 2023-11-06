@@ -4,9 +4,7 @@ interface listProps {
     toDoes: Array<string>, 
 }
 const List: React.FC<listProps> = ({toDoes}:listProps) => {
-    const now = new Date (Date.now());
-    const dateKey = now.toJSON()
-    const listOfToDoes = toDoes.map((toDo:string) => <ToDo key={dateKey}>{toDo}</ToDo>)
+    const listOfToDoes = toDoes.map((toDo:string) => <ToDo key={toDo[1]}>{toDo[0]}</ToDo>)
     return <ul>{listOfToDoes}</ul>
 }
 

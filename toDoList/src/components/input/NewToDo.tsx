@@ -42,6 +42,7 @@ const NewToDo:React.FC<NewToDoProps> = ({update}:NewToDoProps) => {
     return <><input type="text"  ref={input}/> <AddButton onClick={() => {
         handleClick();
         update();
+        input.current.value = '';
     }}/> </>
 }
 
